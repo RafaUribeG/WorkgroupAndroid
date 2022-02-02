@@ -1,4 +1,5 @@
 
-public class Venta {
-
+public class Venta
+{
+	
 }

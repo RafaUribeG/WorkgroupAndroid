@@ -1,66 +1,72 @@
-
-
-public class Producto 
-{
-	private int codigoProducto;
-	private String nombreProducto;
+public class Producto implements Iva{
+	
+	private int codProducto;
+	private String nomProducto;
 	private String tipoProducto;
 	private String descripcionProducto;
 	private int ubicacionBodega;
-	private int precio;
+	private int valorNeto;
 	private int stock;
 	
 	
-	//Constructores
-	public Producto(int codigoProducto, String nombreProducto, String tipoProducto, String descripcionProducto,
-			int ubicacionBodega, int precio, int stock) {
-		
-		this.codigoProducto = codigoProducto;
-		this.nombreProducto = nombreProducto;
-		this.tipoProducto = tipoProducto;
-		this.descripcionProducto = descripcionProducto;
-		this.ubicacionBodega = ubicacionBodega;
-		this.precio = precio;
-		this.stock = stock;
-	}
-	
 	public Producto() {
 		
-		this.codigoProducto = 0;
-		this.nombreProducto = "";
-		this.tipoProducto = "";
-		this.descripcionProducto = "";
-		this.ubicacionBodega = 0;
-		this.precio = 0;
-		this.stock = 0;
+		this.codProducto 		 = 	0;
+		this.nomProducto 		 = 	"";
+		this.tipoProducto 		 = 	"";
+		this.descripcionProducto = 	"";
+		this.ubicacionBodega 	 = 	0;
+		this.valorNeto	 		 = 	0;
+		this.stock 				 = 	0;
+
 	}
 	
+	public Producto(int codProducto, String nomProducto, String tipoProducto, String descripcionProducto,
+			int ubicacionBodega, int valorNeto, int stock) {
+		
+		this.codProducto 		 = 	codProducto;
+		this.nomProducto 		 = 	nomProducto;
+		this.tipoProducto 		 = 	tipoProducto;
+		this.descripcionProducto = 	descripcionProducto;
+		this.ubicacionBodega 	 = 	ubicacionBodega;
+		this.valorNeto 			 = 	valorNeto;
+		this.stock 				 = 	stock; 
 	
-	//Getter y  Setter
-	public int getCodigoProducto() {
-		return codigoProducto;
+		
+		
 	}
-	public void setCodigoProducto(int codigoProducto) {
-		this.codigoProducto = codigoProducto;
+
+	public int getCodProducto() {
+		return codProducto;
 	}
-	public String getNombreProducto() {
-		return nombreProducto;
+
+	public void setCodProducto(int codProducto) {
+		this.codProducto = codProducto;
 	}
-	public void setNombreProducto(String nombreProducto) {
-		this.nombreProducto = nombreProducto;
+
+	public String getNomProducto() {
+		return nomProducto;
 	}
+
+	public void setNomProducto(String nomProducto) {
+		this.nomProducto = nomProducto;
+	}
+
 	public String getTipoProducto() {
 		return tipoProducto;
 	}
+
 	public void setTipoProducto(String tipoProducto) {
 		this.tipoProducto = tipoProducto;
 	}
+
 	public String getDescripcionProducto() {
 		return descripcionProducto;
 	}
+
 	public void setDescripcionProducto(String descripcionProducto) {
 		this.descripcionProducto = descripcionProducto;
-	}		
+	}
 
 	public int getUbicacionBodega() {
 		return ubicacionBodega;
@@ -70,31 +76,43 @@ public class Producto
 		this.ubicacionBodega = ubicacionBodega;
 	}
 
-	public int getPrecio() {
-		return precio;
+	public int getValorNeto() {
+		return valorNeto;
 	}
-	public void setPrecio(int precio) {
-		this.precio = precio;
+
+	public void setValorNeto(int valorNeto) {
+		this.valorNeto = valorNeto;
 	}
+
 	public int getStock() {
 		return stock;
 	}
+
 	public void setStock(int stock) {
 		this.stock = stock;
 	}
 
-
-	//Metodos 
+	
 	public String mostrarDatos() {
 		return " ==== Listado de Productos ==== "
-				+ "\n Código Producto: "          + this.codigoProducto 
-				+ "\n Nombre del Producto: "      + this.nombreProducto 
+				+ "\n Código Producto: "          + this.codProducto 
+				+ "\n Nombre del Producto: "      + this.nomProducto 
 				+ "\n Tipo de Producto: "	      + this.tipoProducto 
 				+ "\n Descripción del Producto: " + this.descripcionProducto
 				+ "\n Ubicación del Producto: "   + "Bodega "+ this.ubicacionBodega
-				+ "\n Precio: "                   + "$" + this.precio 
+				+ "\n Precio: "                   + "$ " + this.valorNeto 
 				+ "\n Stock: "                    + this.stock;
 	}
-	
+
+	public int valorIva() {
+		 int iva = (int)(getValorNeto() * Iva.IVA);		
+		return iva;
+	}
+	public int totalApagar(){
+		int iva = (int)(getValorNeto() * Iva.IVA);
+		int total = (int)(getValorNeto() + iva);
+		
+		return total;
+	}
 	
 }
